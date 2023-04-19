@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TREE</title>
+</head>
+
+<body>
+    <h1> We Are Learning JS</h1>
+    <h2>Abhishek Bansal Here</h2>
+    <p id="geek" class="world"> This is a paragraph 1 <span class="hello">Hello</span> <em>world</em></p>
+    <p id="find"> This is a paragraph 2</p>
+    <script>
+        // getElementById
+        var res = document.getElementById("geek");
+        document.write(res);
+        console.log(res);
+
+        //getElementByTagName
+        var res2 = document.getElementsByTagName('p'); //return the list of p tags
+        console.log(res2); //to access particular tag, we have to mention address
+
+        var res3 = document.getElementsByTagName('*'); // to access all the elements inside your document
+        console.log(res3);
+
+        var res4 = document.body.getElementsByTagName('*'); // to access all the element present inside the body tag
+        console.log(res4);
+
+        var res5 = document.getElementById("geek").getElementsByTagName("span"); // we can also do just like that
+        console.log(res5);
+
+        // As it return collections of elements, to find length -->
+        var len = document.getElementsByTagName("p").length;
+        console.log(len);
+
+        // iterate all the elements through loop
+        for (let i = 0; i < len; i++) {
+            console.log(document.getElementsByTagName("p")[i]);
+        }
+
+        //Similarly is in the case with getElementByClassName
+
+        // --------------------------------------------------------------------------------------------- 
+
+        //Query Selector :-  Return the first element match of the specified selector, or group of selectors. IF no matches are found, null is returned.
+
+        var res6 = document.querySelector("span"); //Element Selector
+        console.log(res6);
+
+        var res7 = document.querySelector("#find"); //Id Selector
+        console.log(res7);
+
+        var res8 = document.querySelector(".hello"); //Class Selector
+        console.log(res6);
+
+        var res9 = document.querySelector("span, p"); // jo pehle milega (jese idhar p mil rha document mein sabse pehle, ye us ko return kr degaa)
+        console.log(res9);
+
+        // --------------------------------------------------------------------------------------------- 
+
+        //QuerySelectorAll :- return static NodeList (that match the specified group of selectors)
+
+        var r10 = document.querySelectorAll("p"); // Element Selector
+        console.log(r10);
+
+        var r11 = document.querySelectorAll("p, span");
+        console.log(r11);
+
+        var r12 = document.querySelectorAll(".hello"); // Class Selector
+        console.log(r12);
+
+        var r13 = document.querySelectorAll("p.world");
+        console.log(r13);
+
+        var r14 = document.querySelectorAll("p > span.hello"); // can also use child selector like this
+        console.log(r14);
+
+        var r15 = document.querySelectorAll("p[id]"); // Attribute Selector
+        console.log(r15);
+
+        var r16 = document.querySelectorAll("p[id='find']");
+        console.log(r16);
+
+        var r17 = document.getElementById("geek").querySelectorAll("span.hello");
+        console.log(r17);
+    </script>
+</body>
+
+</html>

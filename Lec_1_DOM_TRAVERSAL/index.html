@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="hello">
+        <h2 id="heading">Hello world</h2>
+    </div>
+    <div id="world">
+        <h2 id="head2">Hey! How are you!</h2>
+    </div>
+    <section id="mysec"></section>
+
+    <div id="doc_frag"> </div>
+
+    <div class="inner_html">
+
+    </div>
+
+
+    <script>
+        //Create element
+        var node1 = document.createElement("h2");
+        console.log(node1);
+
+        //Create textNode
+        var text = document.createTextNode("This is my text Node");
+        console.log(text);
+
+        // Document Fragment : represents a minimal document object that has no parent.
+        // Methods used in this are appendChild() or insertBefore() etc.
+
+        var df = document.createDocumentFragment();
+        console.log(df);
+
+        // ------------------------------------------------------------------------------------
+
+        // Append Node  (insert at the end of the list)
+        
+        // Append Existing element (I want to append h2 (which is inside div tag) in the section tag)
+        
+        var myid = document.getElementById("heading"); //access the h2 (child)
+
+        var mysec = document.getElementById("mysec"); //access of section tag(Parent)
+
+        //parent_node.appendChild(child_node);
+        mysec.appendChild(myid);
+        console.log(mysec);
+
+        //create a new element and append at end of the div tag.
+        var ele = document.createElement("p");
+        var parent_node = document.getElementById("world");
+        // console.log(parent_node);
+        parent_node.appendChild(ele);
+        console.log(parent_node);
+
+        //create element node (let say h2) and textNode. Append textNode inside that element node. and append this element node inside 2nd div
+
+        var newh2 = document.createElement("h2");
+        var newt = document.createTextNode("I am a text Node");
+        newh2.appendChild(newt);
+         var targer_node = document.getElementById("world");
+        targer_node.appendChild(newh2);
+        console.log(targer_node);
+
+        // Create document fragment. create a element h3 and add text inside it. create an element p and add text inside it. then add both element inside document fragment and then append the content of doc fragment to a particular div
+
+        var df1 = document.createDocumentFragment(); 
+
+        var newh3 = document.createElement("h3");
+        var newt1 = document.createTextNode("This is h3");
+        newh3.append(newt1);
+        var newp = document.createElement("p");
+        var newt2 = document.createTextNode("This is a para");
+        newp.append(newt2);
+
+        df.appendChild(newh3);
+        df.appendChild(newp);
+
+        var tar_div = document.getElementById("doc_frag");
+        tar_div.appendChild(df);
+        console.log(tar_div);
+
+        //insertBefore() Method :  The insertBefore method is used to insert a node before the reference node as a child of a specified parent node. If the given child is a reference to an existing node in the document, insertBefore ) moves it from its current position to the new position. If referenceNode is null, the newNode is inserted at the end of the list of child nodes.
+        // var insert_node = parentNode.insert(newNode, reference_node);
+
+        //InnerHTML
+        var con = document.getElementById("world");
+        con.innerHTML = '<h1> Hello people </h1>';
+        console.log(con);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Event Binding with HTML Attribute</h1>
+    <button onclick="alert('clicked')">Click me</button>
+    <button onclick="show()">Say hi</button>
+
+    <h1>Event binding with JS</h1>
+    <button id="btn">Press</button>
+
+    <h1>addEventListner</h1>
+    <em>object.addEventListener(event, handler, capturePhase);</em>
+    <ul>
+        <li>Object is the node to which the listener is to be bound.</li>
+        <li>Event is a string indicating the type of event.</li>
+        <li>Handler is the function that should be called when the event occurs.</li>
+        <li>capturePhase is a Boolean indicating whether to use Bubbling (false) or Capture (true). This is optional. If
+            you omit there is false by default.</li>
+    </ul>
+    <em>Ex:- btn.addEventListner("click", show, false);</em>
+
+    <h1>Why to use addEventListener()</h1>
+    <em>It allows you to bind multiple handlers to an object for the same event. It can work on any DOM Element, not just HTML one</em>
+    <br> <br>
+    <button id="AEL">addEvent</button>
+
+
+    <h2>Phases</h2>
+    <ul>
+        <li>Capture Phase(Top to Bottom) (use true in third parameter of addEventListener() fun)</li>
+        <li>Target Phase(That element which you target)</li>
+        <li>Bubbling phase(Bottom to top) (use false in third parameter of addEventListener() fun)</li>
+    </ul>
+
+    <h1>Event Methods</h1>
+    <em>preventDefault() Method: To prevent the default action</em>
+
+    <div id="mydiv">
+        <a href="https://www.google.com" id="link">click</a>
+    </div>
+
+    <h1>Types of Events</h1>
+    <ul>
+        <li>Mouse Events</li>
+        <li>Focus  </li>
+        <li>Key Event</li>
+    </ul>
+
+    <h1>Window Object</h1>
+    <br>
+    <h2>setTimeOut() & clearTimeOut()</h2>
+    <em>setTimeOut(function,milliseconds,parameter1,parameter2); </em>
+
+    <p id="myp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime aut delectus iste deserunt nisi. Dolorem eveniet distinctio nulla? Hic dolor sit minus itaque possimus culpa modi illo eos. Vero sint aut, voluptate, culpa fuga incidunt dicta pariatur asperiores deleniti eius facere, vel sapiente doloremque. Quae pariatur rerum tempore quam omnis.</p>
+
+    <button id="cleartime">Dont change color</button>
+
+    <h2>setTimeInterval() & clearInterval()</h2>
+    <em>setTimeInterval(function,milliseconds,parameter1,parameter2); </em>
+    <br>
+    <div id="settime"></div>
+    <button id="clearint">Clear Interval</button>
+
+    <script>
+        function show() {
+            alert("Hii");
+        }
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            alert("Pressed")
+        }
+
+        //addEventListener
+
+        var AEL = document.getElementById("AEL");
+        // we can use more than one handler for the same
+        AEL.addEventListener("click", function(){alert("Event added 1")});
+        AEL.addEventListener("click", function(){alert("Event added 2")});
+
+        //preventDefault()
+
+        function stopLink(e){
+            e.preventDefault();
+        }
+        var a = document.getElementById("link");
+        a.addEventListener("click", stopLink,false);
+        // Now link will not redirect to google website.
+
+        function div1(e){
+            this.style.backgroundColor = 'Orange';
+        }
+        var b = document.getElementById("mydiv");
+        b.addEventListener("click", div1, false);
+        // now background color link become orange
+
+        //Window Object
+        console.dir(window);
+        var h = window.outerHeight;
+        console.log(h);
+
+        //setTimeOut()
+
+        function changecolor(){
+            document.getElementById("myp").style.color = 'red';
+        }
+        // setTimeout(changecolor, 2000); //this fun will work after 2 seconds
+
+        //Another way of writing it.
+
+        // setTimeout(function changecolor(){
+        //     document.getElementById("myp").style.color = 'red';
+        // }, 2000);
+
+        //Another way of writing it.
+        // setTimeout(()=>{
+        //     document.getElementById("myp").style.color = 'red';
+        // }, 2000);
+
+
+        //clearTimeout
+
+        var timeoutId = setTimeout(()=>{
+            document.getElementById("myp").style.color = 'red';
+        }, 5000);
+        function clrtime(){
+
+            clearTimeout(timeoutId);
+        }
+        document.getElementById("cleartime").addEventListener('click', clrtime); 
+
+        //setTimeinterval 
+        
+        function runtext(){
+            document.getElementById("settime").textContent += " Hello";
+        }
+        // setInterval(runtext, 2000);
+        // show hello after every 2 seconds
+
+        //clearInterval
+
+        var intervalid = setInterval(()=>{
+            document.getElementById("settime").textContent += " Hello";
+        }, 2000);
+
+        function clrInterval(){
+            clearInterval(intervalid);
+        }
+        document.getElementById("clearint").addEventListener("click", clrInterval);
+    </script>
+</body>
+
+</html>

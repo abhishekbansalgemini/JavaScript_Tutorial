@@ -1,0 +1,70 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <h1>Form Handling</h1>
+    <h4>4 ways to access form</h4>
+    <em>document.forms[index_number] : It returns the collection of form in the documents</em> <br>
+    <em>document.forms["name_attribute_value"]</em> <br>
+    <em>document.name_attribute_value</em> <br>
+    <em>document.getElementById("ID)</em> <br> <br>
+
+    <h3>Form1</h3>
+    <form action="" name="myForm">
+        username: <input type="text" name="m_username_field"> <br> <br>
+        password: <input type="password" name="m_passwoed_field"> <br> <br>
+        <input type="submit" name="m_sbtn" value="submit">
+    </form>
+
+    <br>
+
+    <h3>Form2</h3>
+    <form action="" name="yourForm">
+        username: <input type="text" name="y_username_field"> <br> <br>
+        password: <input type="password" name="y_passwoed_field"> <br> <br>
+        <input type="submit" name="y_sbtn" value="submit">
+    </form>
+
+    <h2>Accessing form fields in JS</h2>
+    <em>document.form_name.elements[index_number];</em> <br>
+    <em>document.form_name.elements["name_Attribute_value"];</em> <br>
+    <em>document.form_name.name_attribute_value;</em> <br>
+    <em>document.form_name.id_Attribute_Value;</em>  <br>
+    <em>document.getElementsByName("Field_name)</em> <br> <br>
+
+    <h2>Form validation in JS</h2>
+    <em>Constraints: Username you are entering do not contain any number or spaces</em>
+
+
+    <script>
+        // Access using Index Number
+        var f1 = document.forms[0];
+        // console.log(f1);
+
+        //Access using Name_Attribute
+        var f2 = document.forms["yourForm"];
+        // console.log(f2);
+
+        //Accessing form fields in JS
+
+        //Form Validation (Using Regular Expression)
+
+        function validateData(){
+            var ptrn = /^([^0-9\W]*)$/;
+            if(ptrn.test(document.myForm.m_username_field.value)){
+                document.myForm.m_username_field.style.backgroundColor = 'green';
+            }
+            else{
+                document.myForm.m_username_field.style.backgroundColor = 'red';
+            }
+        }
+        document.myForm.m_username_field.addEventListener("keyup", validateData); 
+
+    </script>
+ </body>
+ </html>
