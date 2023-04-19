@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+</head>
+<body>
+    <table border="1" id="mytab">
+        <!-- <caption>My Table Caption</caption> -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody id="mybody">
+            <tr>
+                <td>1</td>
+                <td>Abhishek</td>
+                <td>Btech</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Ayush</td>
+                <td>Btech</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>3</td>
+                <td>Anish</td>
+                <td>Btech</td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <script>
+        var table = document.getElementById("mytab");
+
+        // To access Caption
+
+        // var t_caption = table.caption;
+        // console.log(t_caption);
+        // console.log(t_caption.innerHTML);
+        // table.caption.innerHTML = "New Caption";
+
+        // similarly we have diff diff property to access the table fields
+        // 1. tHead
+        // 2. tFoot
+        // 3. tBodies 
+
+        //Create Caption/ Delete Caption Dynamically
+
+        // var t_cap = table.createCaption();
+        // console.log(t_cap); // if caption is already present than it will return that caption
+
+        // So if we want to create caption
+
+        var create_cap = table.createCaption();
+        create_cap.innerHTML = "Dynamically generated Caption"
+
+        //To delete the caption
+
+        table.deleteCaption();
+
+        //Similarly we have methods like
+        // 1. createTHead();
+        // 2. deleteTHead();
+        // 3. createTFoot();
+        // 4. deleteTFoot();
+
+        // insertRow() & deleteRow() Method
+
+        var row = table.insertRow(-1);
+        // -1 specify index (append row at last)
+        // console.log(row);
+        // row.innerHTML = "<td>2</td> <td>Ayush</td> <td>Btech</td>"
+        row.insertCell(0).textContent = "Vinay"; //We can also insert tge  
+
+        table.deleteRow(-1);
+
+        //HTML TableSection Element
+
+        //Accessing rows of particular section
+
+        var tbody = document.getElementById("mybody");
+        var ro = tbody.rows;
+        console.log(ro[0]);
+        // you can also access the particular row and change its content.
+
+        //HTML TABLE ROW ELEMENT
+
+        // Properties: cells, rowIndex, sectionRowIndex
+        //Methods: insertCell() & deleteCell()
+
+    </script>
+</body>
+</html>
